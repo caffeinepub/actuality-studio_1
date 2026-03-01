@@ -1,0 +1,16 @@
+{
+  "frontend/src/index.css": "Global styles with the new Autumn/Spring OKLCH color system — cream backgrounds, terracotta primary, sage green accent, warm gold, soft blush, and deep forest green tokens — plus Google Fonts imports for Cormorant Garamond (headings) and Inter (body), gradient/glow utilities, and seasonal motif helpers.",
+  "frontend/tailwind.config.js": "Tailwind theme extended with named Autumn/Spring color tokens (terracotta, sage-green, warm-gold, soft-blush, cream, forest-green), Cormorant Garamond/Inter font families, warm card shadows, and seasonal animation keyframes.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations — user profile (get/save) and membership (get, mint, cancel, trial/active status, expiry date) — with proper cache invalidation.",
+  "frontend/src/components/LoginButton.tsx": "Login/logout button using gradient-terracotta for sign-in state and terracotta hover accents for sign-out outline state.",
+  "frontend/src/components/PrincipalDisplay.tsx": "Principal display pill using cream-dark background, sage-green indicator dot, and terracotta hover accents with forest-green copy-check icon.",
+  "frontend/src/components/Navigation.tsx": "Fixed top nav bar using cream/90 background with terracotta active/hover link colors, warm shadow, and updated mobile menu styling.",
+  "frontend/src/components/HeroBanner.tsx": "Full-width hero banner with updated subtitle copy reflecting Steiner's philosophy of architecture as supreme synthesis, warm cream gradient overlays, and seasonal leaf/vine motif.",
+  "frontend/src/components/MembershipCard.tsx": "Membership card with terracotta top accent bar, leaf-sprig corner motif at 30% opacity, terracotta/warm-gold/sage-green status badges, and warm palette for all text and borders.",
+  "frontend/src/components/MintMembershipButton.tsx": "Mint button using gradient-terracotta with warm-shadow, and soft-blush/terracotta error state styling.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Profile setup modal with terracotta icon accent, gradient-terracotta submit button, and terracotta error text on a cream card background.",
+  "frontend/src/pages/LandingPage.tsx": "Landing page updated with a new philosophical introduction section (architecture as supreme synthesis, introducing \"The Sevenfold Arts\" canonical term), the SevenfoldArtsGrid component, and updated CTA copy referencing The Sevenfold Arts — all within the existing autumn/spring aesthetic.",
+  "frontend/src/pages/MembershipDashboard.tsx": "Membership dashboard with terracotta accent colors throughout — login prompt icon, page header labels, stat values, and skeleton placeholders using soft-blush tints.",
+  "frontend/src/App.tsx": "Root app with TanStack Router layout, profile setup modal orchestration, and updated footer using terracotta accent colors and cream-dark background; Toaster switched to light theme.",
+  "frontend/src/components/SevenfoldArtsGrid.tsx": "New responsive grid component presenting all seven artistic disciplines (Music & Sound Design, Literature & Poetry, Movement Arts, Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, Allied Crafts) as styled cards with evocative Steinerian descriptions, terracotta/warm-gold/sage accent cycling, and a section heading of \"The Sevenfold Arts\"."
+}

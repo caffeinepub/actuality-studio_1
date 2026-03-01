@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Actuality Studio is a web platform rooted in Steiner's educational philosophy, positioning architecture as the supreme synthesis that unfolds into the Seven Arts: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts. The UI uses an autumn/spring palette with terracotta and sage tones, gold serif typography, and includes a sticky professional header with navigation (Home, About, Memberships, Sovereign Catalog, Community Examples) and a 'Login with Internet Identity' button.",
+  "architectural_notes": [
+    "Seven Arts framework (needs better naming): Music & Sound Design, Literature & Poetry, Movement Arts (incl. eurythmy/performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts",
+    "Steiner's educational philosophy: architecture as the supreme synthesis from which the Seven Arts unfold — core conceptual pillar of the platform"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-update-all-site-copy-and-conceptual-framing-to-reflect-steiner-s-educational-philosophy-of-architecture-as-the-supreme-synthesis-that-unfolds-into-seven-artistic-disciplines-music-sound-design-literature-poetry-movement-arts-including-contemporary-eurythmy-and-performance-sculpture-ceramics-painting-digital-rendering-drawing-parametric-visualization-and-allied-crafts-this-philosophy-should-be-introduced-on-the-landing-page-hero-and-or-an-about-section-with-clear-evocative-prose",
+      "title": "Update all site copy and conceptual framing to reflect Steiner's educational philosophy of architecture as the supreme synthesis that unfolds into seven artistic disciplines: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts. This philosophy should be introduced on the landing page hero and/or an 'About' section with clear, evocative prose.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-all-instances-of-the-phrase-seven-arts-unfoldment-throughout-the-application-with-a-more-elegant-precise-label-based-on-steiner-s-concept-of-architecture-as-the-supreme-synthesis-from-which-the-arts-emerge-use-the-term-the-sevenfold-arts-as-the-canonical-reference-for-this-framework-across-the-ui-navigation-headings-body-copy-cards-and-any-other-user-facing-text",
+      "title": "Replace all instances of the phrase 'Seven Arts Unfoldment' throughout the application with a more elegant, precise label. Based on Steiner's concept of architecture as the supreme synthesis from which the arts emerge, use the term 'The Sevenfold Arts' as the canonical reference for this framework across the UI (navigation, headings, body copy, cards, and any other user-facing text).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-visual-section-or-grid-on-the-landing-page-that-presents-each-of-the-seven-artistic-disciplines-as-a-distinct-card-or-tile-with-a-short-evocative-description-for-each-the-seven-disciplines-are-music-sound-design-literature-poetry-movement-arts-including-contemporary-eurythmy-and-performance-sculpture-ceramics-painting-digital-rendering-drawing-parametric-visualization-and-allied-crafts-each-card-should-use-the-existing-autumn-spring-palette-and-gold-serif-typography",
+      "title": "Add a visual section or grid on the landing page that presents each of the seven artistic disciplines as a distinct card or tile, with a short evocative description for each. The seven disciplines are: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts. Each card should use the existing autumn/spring palette and gold serif typography.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Update site content to reflect Steiner's philosophy of architecture as supreme synthesis unfolding into the Seven Arts framework",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Propose a better naming convention than 'Seven Arts Unfoldment' for the Seven Arts framework",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Actuality Studio",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,64 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-all-site-copy-and-conceptual-framing-to-reflect-steiner-s-educational-philosophy-of-architecture-as-the-supreme-synthesis-that-unfolds-into-seven-artistic-disciplines-music-sound-design-literature-poetry-movement-arts-including-contemporary-eurythmy-and-performance-sculpture-ceramics-painting-digital-rendering-drawing-parametric-visualization-and-allied-crafts-this-philosophy-should-be-introduced-on-the-landing-page-hero-and-or-an-about-section-with-clear-evocative-prose",
+      "featureTitle": "Update all site copy and conceptual framing to reflect Steiner's educational philosophy of architecture as the supreme synthesis that unfolds into seven artistic disciplines: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts. This philosophy should be introduced on the landing page hero and/or an 'About' section with clear, evocative prose.",
+      "files": [
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-replace-all-instances-of-the-phrase-seven-arts-unfoldment-throughout-the-application-with-a-more-elegant-precise-label-based-on-steiner-s-concept-of-architecture-as-the-supreme-synthesis-from-which-the-arts-emerge-use-the-term-the-sevenfold-arts-as-the-canonical-reference-for-this-framework-across-the-ui-navigation-headings-body-copy-cards-and-any-other-user-facing-text",
+      "featureTitle": "Replace all instances of the phrase 'Seven Arts Unfoldment' throughout the application with a more elegant, precise label. Based on Steiner's concept of architecture as the supreme synthesis from which the arts emerge, use the term 'The Sevenfold Arts' as the canonical reference for this framework across the UI (navigation, headings, body copy, cards, and any other user-facing text).",
+      "files": [
+        "frontend/src/components/HeroBanner.tsx",
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-visual-section-or-grid-on-the-landing-page-that-presents-each-of-the-seven-artistic-disciplines-as-a-distinct-card-or-tile-with-a-short-evocative-description-for-each-the-seven-disciplines-are-music-sound-design-literature-poetry-movement-arts-including-contemporary-eurythmy-and-performance-sculpture-ceramics-painting-digital-rendering-drawing-parametric-visualization-and-allied-crafts-each-card-should-use-the-existing-autumn-spring-palette-and-gold-serif-typography",
+      "featureTitle": "Add a visual section or grid on the landing page that presents each of the seven artistic disciplines as a distinct card or tile, with a short evocative description for each. The seven disciplines are: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts. Each card should use the existing autumn/spring palette and gold serif typography.",
+      "files": [
+        "frontend/src/components/SevenfoldArtsGrid.tsx",
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

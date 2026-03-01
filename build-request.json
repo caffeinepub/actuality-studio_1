@@ -1,0 +1,78 @@
+{
+  "kind": "build_request",
+  "title": "Update Actuality Studio content to reflect Steiner's Seven Arts philosophy with refined naming",
+  "projectName": "Actuality Studio",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Update all site copy and conceptual framing to reflect Steiner's educational philosophy of architecture as the supreme synthesis that unfolds into seven artistic disciplines: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts. This philosophy should be introduced on the landing page hero and/or an 'About' section with clear, evocative prose.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Actuality Studio now extends Steiner's educational philosophy of architecture as the supreme synthesis that unfolds into the Seven Arts — Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The landing page hero or an intro section clearly states that Actuality Studio is grounded in Steiner's philosophy of architecture as supreme synthesis",
+        "All seven artistic disciplines are named exactly: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts",
+        "The prose is evocative and coherent with the gold serif, autumn/spring visual aesthetic"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Replace all instances of the phrase 'Seven Arts Unfoldment' throughout the application with a more elegant, precise label. Based on Steiner's concept of architecture as the supreme synthesis from which the arts emerge, use the term 'The Sevenfold Arts' as the canonical reference for this framework across the UI (navigation, headings, body copy, cards, and any other user-facing text).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "I need a better way to refer to the above than the 'Seven Arts Unfoldment'"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No instance of 'Seven Arts Unfoldment' remains in any user-facing text",
+        "The new canonical term 'The Sevenfold Arts' is used consistently wherever this framework is referenced",
+        "The updated label reads naturally in all contexts (headings, body text, navigation labels if applicable)"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add a visual section or grid on the landing page that presents each of the seven artistic disciplines as a distinct card or tile, with a short evocative description for each. The seven disciplines are: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts. Each card should use the existing autumn/spring palette and gold serif typography.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "architecture as the supreme synthesis that unfolds into the Seven Arts — Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A grid or card layout appears on the landing page displaying all seven artistic disciplines by name",
+        "Each card includes a short evocative description (1–2 sentences) appropriate to the Steinerian philosophy",
+        "Cards use terracotta, sage, and warm-gold colour tokens consistent with the existing design system",
+        "The section heading uses the new canonical term 'The Sevenfold Arts'"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not alter the sticky header navigation link labels (Home, About, Memberships, Sovereign Catalog, Community Examples)",
+    "Do not modify files under frontend/src/hooks/ or frontend/src/components/ui",
+    "Maintain the existing autumn/spring palette (terracotta, sage-green, warm-gold) and Cormorant Garamond gold serif typography",
+    "Do not change backend data models or membership logic"
+  ],
+  "nonGoals": [
+    "Adding new backend features or changing the membership/NFT system",
+    "Redesigning the overall visual theme or colour palette",
+    "Adding new navigation routes beyond what already exists"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

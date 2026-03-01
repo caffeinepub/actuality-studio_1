@@ -1,0 +1,68 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-01T19:45:57.171Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Update all site copy and conceptual framing to reflect Steiner's educational philosophy of architecture as the supreme synthesis that unfolds into seven artistic disciplines: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts. This philosophy should be introduced on the landing page hero and/or an 'About' section with clear, evocative prose.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/LandingPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/LandingPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Replace all instances of the phrase 'Seven Arts Unfoldment' throughout the application with a more elegant, precise label. Based on Steiner's concept of architecture as the supreme synthesis from which the arts emerge, use the term 'The Sevenfold Arts' as the canonical reference for this framework across the UI (navigation, headings, body copy, cards, and any other user-facing text).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/LandingPage.tsx",
+          "frontend/src/components/HeroBanner.tsx",
+          "frontend/src/pages/MembershipDashboard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/LandingPage.tsx",
+          "frontend/src/components/HeroBanner.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add a visual section or grid on the landing page that presents each of the seven artistic disciplines as a distinct card or tile, with a short evocative description for each. The seven disciplines are: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts. Each card should use the existing autumn/spring palette and gold serif typography.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/SevenfoldArtsGrid.tsx",
+          "frontend/src/pages/LandingPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/SevenfoldArtsGrid.tsx",
+          "frontend/src/pages/LandingPage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/HeroBanner.tsx",
+    "frontend/src/components/SevenfoldArtsGrid.tsx",
+    "frontend/src/pages/LandingPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

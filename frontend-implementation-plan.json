@@ -1,0 +1,71 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Update Actuality Studio content to reflect Steiner's Seven Arts philosophy with refined naming",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Update all site copy and conceptual framing to reflect Steiner's educational philosophy of architecture as the supreme synthesis that unfolds into seven artistic disciplines, introducing this philosophy on the landing page hero and/or an 'About' section with clear, evocative prose.",
+      "acceptanceCriteria": [
+        "The landing page hero or an intro section clearly states that Actuality Studio is grounded in Steiner's philosophy of architecture as supreme synthesis",
+        "All seven artistic disciplines are named exactly: Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts",
+        "The prose is evocative and coherent with the gold serif, autumn/spring visual aesthetic"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Add a new philosophical introduction section immediately after the HeroBanner component that presents Steiner's concept of architecture as supreme synthesis. Include evocative prose explaining how Actuality Studio embodies this philosophy, written in a tone that matches the warm autumn/spring aesthetic. Use Cormorant Garamond typography for headings and ensure the text flows naturally with terracotta and warm-gold accent colors from the existing design system."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Replace all instances of 'Seven Arts Unfoldment' with 'The Sevenfold Arts' as the canonical reference throughout the application UI.",
+      "acceptanceCriteria": [
+        "No instance of 'Seven Arts Unfoldment' remains in any user-facing text",
+        "The new canonical term 'The Sevenfold Arts' is used consistently wherever this framework is referenced",
+        "The updated label reads naturally in all contexts (headings, body text, navigation labels if applicable)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Search for and replace any occurrences of 'Seven Arts Unfoldment' with 'The Sevenfold Arts' in all headings, body text, and descriptive content. Ensure the new term integrates naturally into existing prose and maintains grammatical correctness in context."
+        },
+        {
+          "path": "frontend/src/components/HeroBanner.tsx",
+          "operation": "modify",
+          "description": "If the hero banner contains any reference to 'Seven Arts Unfoldment', replace it with 'The Sevenfold Arts'. Verify that the updated term fits visually within the existing headline typography and terracotta styling."
+        },
+        {
+          "path": "frontend/src/pages/MembershipDashboard.tsx",
+          "operation": "modify",
+          "description": "Search for any instances of 'Seven Arts Unfoldment' in descriptive text or feature explanations and replace with 'The Sevenfold Arts'. Ensure consistency across all membership-related messaging."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add a visual section or grid on the landing page presenting each of the seven artistic disciplines as distinct cards with short evocative descriptions, using the existing autumn/spring palette and gold serif typography.",
+      "acceptanceCriteria": [
+        "A grid or card layout appears on the landing page displaying all seven artistic disciplines by name",
+        "Each card includes a short evocative description (1–2 sentences) appropriate to the Steinerian philosophy",
+        "Cards use terracotta, sage, and warm-gold colour tokens consistent with the existing design system",
+        "The section heading uses the new canonical term 'The Sevenfold Arts'"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SevenfoldArtsGrid.tsx",
+          "operation": "create",
+          "description": "Create a new component that renders a responsive grid of seven artistic discipline cards. Each card should display the discipline name (Music & Sound Design, Literature & Poetry, Movement Arts (including contemporary eurythmy and performance), Sculpture & Ceramics, Painting & Digital Rendering, Drawing & Parametric Visualization, and allied crafts) as a heading in Cormorant Garamond font with warm-gold accents, followed by a 1-2 sentence evocative description that connects the discipline to Steiner's architectural synthesis. Use a CSS grid layout that adapts from single column on mobile to 2-3 columns on larger screens. Apply terracotta borders or sage-green backgrounds from the existing design tokens, and add subtle hover effects using the warm autumn/spring palette. Ensure each card has consistent padding and typography hierarchy."
+        },
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Import and integrate the new SevenfoldArtsGrid component into the landing page layout. Position it after the philosophical introduction section (added in REQ-1) and before the CTA section. Add a section heading above the grid that reads 'The Sevenfold Arts' styled with Cormorant Garamond and warm-gold color. Ensure proper spacing and visual rhythm with surrounding sections using the existing layout patterns."
+        }
+      ]
+    }
+  ]
+}

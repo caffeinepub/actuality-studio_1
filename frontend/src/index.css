@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* ── Autumn / Spring Palette ─────────────────────────────────────────── */
+    /* Cream background  #F8F1E9 → oklch(0.955 0.018 75)                     */
+    /* Terracotta orange #C46A4E → oklch(0.58  0.12  38)                     */
+    /* Sage green        #A8CABA → oklch(0.80  0.055 162)                    */
+    /* Warm gold         #F4A261 → oklch(0.76  0.13  55)                     */
+    /* Soft blush        #E8B4A2 → oklch(0.78  0.07  38)                     */
+    /* Deep forest green #4A7043 → oklch(0.46  0.09  145)                    */
+
+    --background:          0.955 0.018 75;
+    --foreground:          0.28  0.04  38;
+
+    --card:                0.975 0.012 75;
+    --card-foreground:     0.28  0.04  38;
+
+    --popover:             0.975 0.012 75;
+    --popover-foreground:  0.28  0.04  38;
+
+    /* Primary = terracotta */
+    --primary:             0.58  0.12  38;
+    --primary-foreground:  0.97  0.008 75;
+
+    /* Secondary = soft blush */
+    --secondary:           0.92  0.03  38;
+    --secondary-foreground:0.35  0.06  38;
+
+    /* Muted = warm cream tint */
+    --muted:               0.93  0.015 75;
+    --muted-foreground:    0.52  0.05  55;
+
+    /* Accent = sage green */
+    --accent:              0.80  0.055 162;
+    --accent-foreground:   0.22  0.06  145;
+
+    --destructive:         0.58  0.12  38;
+    --destructive-foreground: 0.97 0.008 75;
+
+    --border:              0.88  0.025 55;
+    --input:               0.92  0.018 75;
+    --ring:                0.58  0.12  38;
+
+    /* ── Seasonal palette tokens ─────────────────────────────────────────── */
+    --terracotta:          0.58  0.12  38;
+    --terracotta-light:    0.72  0.09  38;
+    --terracotta-dim:      0.48  0.10  38;
+
+    --sage:                0.80  0.055 162;
+    --sage-dark:           0.46  0.09  145;
+    --sage-light:          0.90  0.03  162;
+
+    --warm-gold:           0.76  0.13  55;
+    --warm-gold-bright:    0.82  0.14  58;
+    --warm-gold-dim:       0.65  0.11  52;
+
+    --blush:               0.78  0.07  38;
+    --blush-light:         0.92  0.03  38;
+
+    --cream:               0.955 0.018 75;
+    --cream-dark:          0.91  0.025 75;
+
+    --forest:              0.46  0.09  145;
+    --forest-light:        0.60  0.08  145;
+
+    /* Chart */
+    --chart-1: 0.58  0.12  38;
+    --chart-2: 0.80  0.055 162;
+    --chart-3: 0.76  0.13  55;
+    --chart-4: 0.78  0.07  38;
+    --chart-5: 0.46  0.09  145;
+
+    /* Sidebar */
+    --sidebar:                  0.945 0.020 75;
+    --sidebar-foreground:       0.28  0.04  38;
+    --sidebar-primary:          0.58  0.12  38;
+    --sidebar-primary-foreground:0.97 0.008 75;
+    --sidebar-accent:           0.92  0.03  38;
+    --sidebar-accent-foreground:0.35  0.06  38;
+    --sidebar-border:           0.88  0.025 55;
+    --sidebar-ring:             0.58  0.12  38;
+  }
+
+  /* Dark mode — keep warm, just deepen the palette */
+  .dark {
+    --background:          0.20  0.025 38;
+    --foreground:          0.93  0.018 75;
+
+    --card:                0.24  0.025 38;
+    --card-foreground:     0.93  0.018 75;
+
+    --popover:             0.26  0.025 38;
+    --popover-foreground:  0.93  0.018 75;
+
+    --primary:             0.72  0.10  38;
+    --primary-foreground:  0.18  0.03  38;
+
+    --secondary:           0.30  0.03  38;
+    --secondary-foreground:0.88  0.02  75;
+
+    --muted:               0.28  0.025 38;
+    --muted-foreground:    0.62  0.05  55;
+
+    --accent:              0.46  0.09  145;
+    --accent-foreground:   0.90  0.03  162;
+
+    --destructive:         0.65  0.14  38;
+    --destructive-foreground: 0.97 0.008 75;
+
+    --border:              0.32  0.03  38;
+    --input:               0.28  0.025 38;
+    --ring:                0.72  0.10  38;
+
+    --terracotta:          0.72  0.10  38;
+    --terracotta-light:    0.80  0.08  38;
+    --terracotta-dim:      0.55  0.09  38;
+
+    --sage:                0.60  0.07  162;
+    --sage-dark:           0.46  0.09  145;
+    --sage-light:          0.72  0.06  162;
+
+    --warm-gold:           0.76  0.13  55;
+    --warm-gold-bright:    0.82  0.14  58;
+    --warm-gold-dim:       0.65  0.11  52;
+
+    --blush:               0.65  0.07  38;
+    --blush-light:         0.75  0.05  38;
+
+    --cream:               0.93  0.018 75;
+    --cream-dark:          0.85  0.025 75;
+
+    --forest:              0.46  0.09  145;
+    --forest-light:        0.60  0.08  145;
+
+    --chart-1: 0.72  0.10  38;
+    --chart-2: 0.60  0.07  162;
+    --chart-3: 0.76  0.13  55;
+    --chart-4: 0.65  0.07  38;
+    --chart-5: 0.46  0.09  145;
+
+    --sidebar:                  0.22  0.025 38;
+    --sidebar-foreground:       0.93  0.018 75;
+    --sidebar-primary:          0.72  0.10  38;
+    --sidebar-primary-foreground:0.18 0.03  38;
+    --sidebar-accent:           0.30  0.03  38;
+    --sidebar-accent-foreground:0.88  0.02  75;
+    --sidebar-border:           0.32  0.03  38;
+    --sidebar-ring:             0.72  0.10  38;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+@layer utilities {
+  /* ── Font helpers ──────────────────────────────────────────────────────── */
+  .font-display {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── Terracotta ────────────────────────────────────────────────────────── */
+  .text-terracotta        { color: oklch(var(--terracotta)); }
+  .text-terracotta-light  { color: oklch(var(--terracotta-light)); }
+  .bg-terracotta          { background-color: oklch(var(--terracotta)); }
+  .border-terracotta      { border-color: oklch(var(--terracotta)); }
+
+  /* ── Sage ──────────────────────────────────────────────────────────────── */
+  .text-sage              { color: oklch(var(--sage)); }
+  .text-forest            { color: oklch(var(--forest)); }
+  .bg-sage                { background-color: oklch(var(--sage)); }
+  .bg-forest              { background-color: oklch(var(--forest)); }
+  .border-sage            { border-color: oklch(var(--sage)); }
+
+  /* ── Warm gold ─────────────────────────────────────────────────────────── */
+  .text-warm-gold         { color: oklch(var(--warm-gold)); }
+  .text-warm-gold-bright  { color: oklch(var(--warm-gold-bright)); }
+  .bg-warm-gold           { background-color: oklch(var(--warm-gold)); }
+  .border-warm-gold       { border-color: oklch(var(--warm-gold)); }
+
+  /* ── Blush ─────────────────────────────────────────────────────────────── */
+  .text-blush             { color: oklch(var(--blush)); }
+  .bg-blush               { background-color: oklch(var(--blush)); }
+  .bg-blush-light         { background-color: oklch(var(--blush-light)); }
+
+  /* ── Cream ─────────────────────────────────────────────────────────────── */
+  .bg-cream               { background-color: oklch(var(--cream)); }
+  .bg-cream-dark          { background-color: oklch(var(--cream-dark)); }
+
+  /* ── Legacy gold aliases (keep for backward compat) ───────────────────── */
+  .text-gold              { color: oklch(var(--warm-gold)); }
+  .text-gold-bright       { color: oklch(var(--warm-gold-bright)); }
+  .text-gold-dim          { color: oklch(var(--warm-gold-dim)); }
+  .bg-gold                { background-color: oklch(var(--warm-gold)); }
+  .border-gold            { border-color: oklch(var(--warm-gold)); }
+  .border-gold-dim        { border-color: oklch(var(--warm-gold-dim)); }
+
+  /* ── Gradients ─────────────────────────────────────────────────────────── */
+  .gradient-terracotta {
+    background: linear-gradient(135deg, oklch(var(--warm-gold-bright)), oklch(var(--terracotta)));
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, oklch(var(--warm-gold-bright)), oklch(var(--warm-gold-dim)));
+  }
+
+  .gradient-sage {
+    background: linear-gradient(135deg, oklch(var(--sage)), oklch(var(--forest)));
+  }
+
+  .gradient-text-terracotta {
+    background: linear-gradient(135deg, oklch(var(--warm-gold-bright)), oklch(var(--terracotta)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-gold {
+    background: linear-gradient(135deg, oklch(var(--warm-gold-bright)), oklch(var(--terracotta)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Glows / shadows ───────────────────────────────────────────────────── */
+  .glow-terracotta {
+    box-shadow: 0 0 20px oklch(var(--terracotta) / 0.25), 0 0 40px oklch(var(--terracotta) / 0.10);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px oklch(var(--warm-gold) / 0.25), 0 0 40px oklch(var(--warm-gold) / 0.10);
+  }
+
+  /* ── Leaf / vine decorative motif ──────────────────────────────────────── */
+  .motif-leaf {
+    background-image: url('/assets/generated/seasonal-leaf-vine-motif.dim_800x400.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+}
