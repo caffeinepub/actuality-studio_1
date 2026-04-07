@@ -1,0 +1,449 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Twilight (default — App Interface) */
+    --background: 0.22 0.06 280;
+    --foreground: 0.965 0.012 75;
+    --card: 0.26 0.06 278;
+    --card-foreground: 0.965 0.012 75;
+    --popover: 0.28 0.06 276;
+    --popover-foreground: 0.965 0.012 75;
+    --primary: 0.78 0.1 55;
+    --primary-foreground: 0.22 0.04 280;
+    --secondary: 0.32 0.06 278;
+    --secondary-foreground: 0.9 0.01 75;
+    --muted: 0.3 0.055 278;
+    --muted-foreground: 0.72 0.04 75;
+    --accent: 0.65 0.1 280;
+    --accent-foreground: 0.965 0.012 75;
+    --destructive: 0.6 0.18 25;
+    --destructive-foreground: 0.97 0.005 60;
+    --border: 0.35 0.06 278;
+    --input: 0.3 0.055 278;
+    --ring: 0.78 0.1 55;
+    --terracotta: 0.78 0.1 55;
+    --terracotta-light: 0.84 0.08 55;
+    --terracotta-dim: 0.65 0.09 52;
+    --warm-gold: 0.78 0.1 55;
+    --warm-gold-bright: 0.84 0.12 58;
+    --warm-gold-dim: 0.65 0.09 52;
+    --sage: 0.65 0.1 280;
+    --sage-dark: 0.5 0.12 282;
+    --sage-light: 0.75 0.08 278;
+    --blush: 0.7 0.08 55;
+    --blush-light: 0.78 0.06 55;
+    --cream: 0.965 0.012 75;
+    --cream-dark: 0.9 0.015 75;
+    --forest: 0.5 0.12 282;
+    --forest-light: 0.62 0.1 280;
+    --chart-1: 0.78 0.1 55;
+    --chart-2: 0.65 0.1 280;
+    --chart-3: 0.72 0.08 330;
+    --chart-4: 0.7 0.08 55;
+    --chart-5: 0.5 0.12 282;
+    --sidebar: 0.24 0.06 280;
+    --sidebar-foreground: 0.965 0.012 75;
+    --sidebar-primary: 0.78 0.1 55;
+    --sidebar-primary-foreground: 0.22 0.04 280;
+    --sidebar-accent: 0.32 0.06 278;
+    --sidebar-accent-foreground: 0.9 0.01 75;
+    --sidebar-border: 0.35 0.06 278;
+    --sidebar-ring: 0.78 0.1 55;
+  }
+
+  /* Dawn: luminous warm-white ground */
+  .theme-dawn {
+    --background: 0.988 0.01 75;
+    --foreground: 0.25 0.03 60;
+    --card: 0.98 0.008 75;
+    --card-foreground: 0.25 0.03 60;
+    --popover: 0.98 0.008 75;
+    --popover-foreground: 0.25 0.03 60;
+    --primary: 0.83 0.14 85;
+    --primary-foreground: 0.25 0.03 60;
+    --secondary: 0.94 0.025 75;
+    --secondary-foreground: 0.3 0.04 60;
+    --muted: 0.95 0.015 75;
+    --muted-foreground: 0.5 0.04 60;
+    --accent: 0.72 0.08 225;
+    --accent-foreground: 0.97 0.005 75;
+    --destructive: 0.58 0.18 25;
+    --destructive-foreground: 0.97 0.005 60;
+    --border: 0.9 0.02 75;
+    --input: 0.93 0.012 75;
+    --ring: 0.83 0.14 85;
+    --terracotta: 0.83 0.14 85;
+    --terracotta-light: 0.88 0.1 85;
+    --terracotta-dim: 0.72 0.12 82;
+    --warm-gold: 0.83 0.14 85;
+    --warm-gold-bright: 0.88 0.16 88;
+    --warm-gold-dim: 0.72 0.12 82;
+    --sage: 0.72 0.08 225;
+    --sage-dark: 0.55 0.1 228;
+    --sage-light: 0.85 0.05 222;
+    --blush: 0.88 0.06 60;
+    --blush-light: 0.94 0.03 65;
+    --cream: 0.988 0.01 75;
+    --cream-dark: 0.96 0.015 75;
+    --forest: 0.55 0.1 228;
+    --forest-light: 0.68 0.08 225;
+    --chart-1: 0.83 0.14 85;
+    --chart-2: 0.72 0.08 225;
+    --chart-3: 0.78 0.1 55;
+    --chart-4: 0.88 0.06 60;
+    --chart-5: 0.55 0.1 228;
+    --sidebar: 0.98 0.008 75;
+    --sidebar-foreground: 0.25 0.03 60;
+    --sidebar-primary: 0.83 0.14 85;
+    --sidebar-primary-foreground: 0.25 0.03 60;
+    --sidebar-accent: 0.94 0.025 75;
+    --sidebar-accent-foreground: 0.3 0.04 60;
+    --sidebar-border: 0.9 0.02 75;
+    --sidebar-ring: 0.83 0.14 85;
+  }
+
+  /* Twilight: deep blue-violet app interface */
+  .theme-twilight {
+    --background: 0.22 0.06 280;
+    --foreground: 0.965 0.012 75;
+    --card: 0.26 0.06 278;
+    --card-foreground: 0.965 0.012 75;
+    --popover: 0.28 0.06 276;
+    --popover-foreground: 0.965 0.012 75;
+    --primary: 0.78 0.1 55;
+    --primary-foreground: 0.22 0.04 280;
+    --secondary: 0.32 0.06 278;
+    --secondary-foreground: 0.9 0.01 75;
+    --muted: 0.3 0.055 278;
+    --muted-foreground: 0.72 0.04 75;
+    --accent: 0.65 0.1 280;
+    --accent-foreground: 0.965 0.012 75;
+    --destructive: 0.6 0.18 25;
+    --destructive-foreground: 0.97 0.005 60;
+    --border: 0.35 0.06 278;
+    --input: 0.3 0.055 278;
+    --ring: 0.78 0.1 55;
+    --terracotta: 0.78 0.1 55;
+    --terracotta-light: 0.84 0.08 55;
+    --terracotta-dim: 0.65 0.09 52;
+    --warm-gold: 0.78 0.1 55;
+    --warm-gold-bright: 0.84 0.12 58;
+    --warm-gold-dim: 0.65 0.09 52;
+    --sage: 0.65 0.1 280;
+    --sage-dark: 0.5 0.12 282;
+    --sage-light: 0.75 0.08 278;
+    --blush: 0.7 0.08 55;
+    --blush-light: 0.78 0.06 55;
+    --cream: 0.965 0.012 75;
+    --cream-dark: 0.9 0.015 75;
+    --forest: 0.5 0.12 282;
+    --forest-light: 0.62 0.1 280;
+    --chart-1: 0.78 0.1 55;
+    --chart-2: 0.65 0.1 280;
+    --chart-3: 0.72 0.08 330;
+    --chart-4: 0.7 0.08 55;
+    --chart-5: 0.5 0.12 282;
+    --sidebar: 0.24 0.06 280;
+    --sidebar-foreground: 0.965 0.012 75;
+    --sidebar-primary: 0.78 0.1 55;
+    --sidebar-primary-foreground: 0.22 0.04 280;
+    --sidebar-accent: 0.32 0.06 278;
+    --sidebar-accent-foreground: 0.9 0.01 75;
+    --sidebar-border: 0.35 0.06 278;
+    --sidebar-ring: 0.78 0.1 55;
+  }
+
+  /* Forest-Soul: earthy sage affiliate palette */
+  .theme-forest {
+    --background: 0.94 0.04 145;
+    --foreground: 0.26 0.06 145;
+    --card: 0.96 0.03 145;
+    --card-foreground: 0.26 0.06 145;
+    --popover: 0.96 0.03 145;
+    --popover-foreground: 0.26 0.06 145;
+    --primary: 0.72 0.1 45;
+    --primary-foreground: 0.97 0.005 60;
+    --secondary: 0.9 0.04 145;
+    --secondary-foreground: 0.32 0.07 145;
+    --muted: 0.92 0.03 145;
+    --muted-foreground: 0.52 0.05 145;
+    --accent: 0.69 0.08 175;
+    --accent-foreground: 0.97 0.005 175;
+    --destructive: 0.58 0.18 25;
+    --destructive-foreground: 0.97 0.005 60;
+    --border: 0.87 0.04 145;
+    --input: 0.91 0.03 145;
+    --ring: 0.72 0.1 45;
+    --terracotta: 0.72 0.1 45;
+    --terracotta-light: 0.8 0.08 45;
+    --terracotta-dim: 0.6 0.09 42;
+    --warm-gold: 0.72 0.1 45;
+    --warm-gold-bright: 0.78 0.12 48;
+    --warm-gold-dim: 0.62 0.09 42;
+    --sage: 0.69 0.08 175;
+    --sage-dark: 0.52 0.09 172;
+    --sage-light: 0.82 0.05 175;
+    --blush: 0.78 0.07 38;
+    --blush-light: 0.88 0.04 40;
+    --cream: 0.96 0.03 145;
+    --cream-dark: 0.91 0.04 145;
+    --forest: 0.52 0.09 172;
+    --forest-light: 0.65 0.07 170;
+    --chart-1: 0.72 0.1 45;
+    --chart-2: 0.69 0.08 175;
+    --chart-3: 0.78 0.08 85;
+    --chart-4: 0.78 0.07 38;
+    --chart-5: 0.52 0.09 172;
+    --sidebar: 0.93 0.04 145;
+    --sidebar-foreground: 0.26 0.06 145;
+    --sidebar-primary: 0.72 0.1 45;
+    --sidebar-primary-foreground: 0.97 0.005 60;
+    --sidebar-accent: 0.9 0.04 145;
+    --sidebar-accent-foreground: 0.32 0.07 145;
+    --sidebar-border: 0.87 0.04 145;
+    --sidebar-ring: 0.72 0.1 45;
+  }
+
+  /* Dark mode (used by Twilight) */
+  .dark {
+    --background: 0.2 0.025 38;
+    --foreground: 0.93 0.018 75;
+    --card: 0.24 0.025 38;
+    --card-foreground: 0.93 0.018 75;
+    --popover: 0.26 0.025 38;
+    --popover-foreground: 0.93 0.018 75;
+    --primary: 0.72 0.1 38;
+    --primary-foreground: 0.18 0.03 38;
+    --secondary: 0.3 0.03 38;
+    --secondary-foreground: 0.88 0.02 75;
+    --muted: 0.28 0.025 38;
+    --muted-foreground: 0.62 0.05 55;
+    --accent: 0.46 0.09 145;
+    --accent-foreground: 0.9 0.03 162;
+    --destructive: 0.65 0.14 38;
+    --destructive-foreground: 0.97 0.008 75;
+    --border: 0.32 0.03 38;
+    --input: 0.28 0.025 38;
+    --ring: 0.72 0.1 38;
+    --terracotta: 0.72 0.1 38;
+    --terracotta-light: 0.8 0.08 38;
+    --terracotta-dim: 0.55 0.09 38;
+    --sage: 0.6 0.07 162;
+    --sage-dark: 0.46 0.09 145;
+    --sage-light: 0.72 0.06 162;
+    --warm-gold: 0.76 0.13 55;
+    --warm-gold-bright: 0.82 0.14 58;
+    --warm-gold-dim: 0.65 0.11 52;
+    --blush: 0.65 0.07 38;
+    --blush-light: 0.75 0.05 38;
+    --cream: 0.93 0.018 75;
+    --cream-dark: 0.85 0.025 75;
+    --forest: 0.46 0.09 145;
+    --forest-light: 0.6 0.08 145;
+    --chart-1: 0.72 0.1 38;
+    --chart-2: 0.6 0.07 162;
+    --chart-3: 0.76 0.13 55;
+    --chart-4: 0.65 0.07 38;
+    --chart-5: 0.46 0.09 145;
+    --sidebar: 0.22 0.025 38;
+    --sidebar-foreground: 0.93 0.018 75;
+    --sidebar-primary: 0.72 0.1 38;
+    --sidebar-primary-foreground: 0.18 0.03 38;
+    --sidebar-accent: 0.3 0.03 38;
+    --sidebar-accent-foreground: 0.88 0.02 75;
+    --sidebar-border: 0.32 0.03 38;
+    --sidebar-ring: 0.72 0.1 38;
+  }
+
+  /* Twilight dark mode overrides */
+  .theme-twilight.dark,
+  .theme-twilight {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: light;
+  }
+  html.theme-twilight {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Cormorant Garamond", serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Cormorant Garamond", serif;
+  }
+  .font-body {
+    font-family: "Inter", sans-serif;
+  }
+
+  .text-terracotta {
+    color: oklch(var(--terracotta));
+  }
+  .text-terracotta-light {
+    color: oklch(var(--terracotta-light));
+  }
+  .bg-terracotta {
+    background-color: oklch(var(--terracotta));
+  }
+  .border-terracotta {
+    border-color: oklch(var(--terracotta));
+  }
+
+  .text-sage {
+    color: oklch(var(--sage));
+  }
+  .text-forest {
+    color: oklch(var(--forest));
+  }
+  .bg-sage {
+    background-color: oklch(var(--sage));
+  }
+  .bg-forest {
+    background-color: oklch(var(--forest));
+  }
+  .border-sage {
+    border-color: oklch(var(--sage));
+  }
+
+  .text-warm-gold {
+    color: oklch(var(--warm-gold));
+  }
+  .text-warm-gold-bright {
+    color: oklch(var(--warm-gold-bright));
+  }
+  .bg-warm-gold {
+    background-color: oklch(var(--warm-gold));
+  }
+  .border-warm-gold {
+    border-color: oklch(var(--warm-gold));
+  }
+
+  .text-blush {
+    color: oklch(var(--blush));
+  }
+  .bg-blush {
+    background-color: oklch(var(--blush));
+  }
+  .bg-blush-light {
+    background-color: oklch(var(--blush-light));
+  }
+
+  .bg-cream {
+    background-color: oklch(var(--cream));
+  }
+  .bg-cream-dark {
+    background-color: oklch(var(--cream-dark));
+  }
+
+  .text-gold {
+    color: oklch(var(--warm-gold));
+  }
+  .text-gold-bright {
+    color: oklch(var(--warm-gold-bright));
+  }
+  .text-gold-dim {
+    color: oklch(var(--warm-gold-dim));
+  }
+  .bg-gold {
+    background-color: oklch(var(--warm-gold));
+  }
+  .border-gold {
+    border-color: oklch(var(--warm-gold));
+  }
+  .border-gold-dim {
+    border-color: oklch(var(--warm-gold-dim));
+  }
+
+  .gradient-terracotta {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--warm-gold-bright)),
+      oklch(var(--terracotta))
+    );
+  }
+  .gradient-gold {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--warm-gold-bright)),
+      oklch(var(--warm-gold-dim))
+    );
+  }
+  .gradient-sage {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--sage)),
+      oklch(var(--forest))
+    );
+  }
+  .gradient-text-terracotta {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--warm-gold-bright)),
+      oklch(var(--terracotta))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-text-gold {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--warm-gold-bright)),
+      oklch(var(--terracotta))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glow-terracotta {
+    box-shadow: 0 0 20px oklch(var(--terracotta) / 0.25), 0 0 40px
+      oklch(var(--terracotta) / 0.1);
+  }
+  .glow-gold {
+    box-shadow: 0 0 20px oklch(var(--warm-gold) / 0.25), 0 0 40px
+      oklch(var(--warm-gold) / 0.1);
+  }
+  .motif-leaf {
+    background-image: url("/assets/generated/seasonal-leaf-vine-motif.dim_800x400.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+}
+
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(2%, 3%) scale(1.04);
+  }
+  66% {
+    transform: translate(-2%, 1.5%) scale(0.97);
+  }
+}
