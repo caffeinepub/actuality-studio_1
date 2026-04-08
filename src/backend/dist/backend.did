@@ -1,0 +1,59 @@
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserProfile = record {name: text;};
+type Time = int;
+type ShareLinkPublic = 
+ record {
+   active: bool;
+   createdAt: Time;
+   createdBy: principal;
+   documentName: text;
+   expiryTime: Time;
+   id: text;
+ };
+type MembershipTier = 
+ variant {
+   free;
+   full;
+   trial;
+ };
+type Membership = 
+ record {
+   active: bool;
+   mintTimestamp: Time;
+   owner: principal;
+   tokenId: nat;
+   trialPeriod: bool;
+ };
+service : {
+  _initializeAccessControl: () -> ();
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  cancelMembership: () -> ();
+  createShareLink: (documentName: text, expiryHours: nat, passwordHash:
+   text) -> (text);
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getLinkedApps: (p: principal) -> (vec text) query;
+  getMembership: (owner: principal) -> (opt Membership) query;
+  getMembershipForCaller: () -> (opt Membership) query;
+  getMembershipForUser: (user: principal) -> (opt Membership) query;
+  getMembershipTier: (p: principal) -> (MembershipTier) query;
+  getSelectedArts: () -> (vec text) query;
+  getShareLink: (linkId: text) -> (opt ShareLinkPublic) query;
+  getTrialExpiryDate: () -> (opt Time) query;
+  getUserByPrincipal: (p: principal) -> (opt UserProfile) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  isCallerAdmin: () -> (bool) query;
+  isMembershipActive: () -> (bool) query;
+  isTrialActive: () -> (bool) query;
+  linkAppPrincipal: (appId: text, userPrincipal: principal) -> ();
+  mintMembership: () -> ();
+  revokeShareLink: (linkId: text) -> ();
+  saveCallerUserProfile: (profile: UserProfile) -> ();
+  saveSelectedArts: (arts: vec text) -> ();
+  validateShareLink: (linkId: text, passwordHash: text) -> (bool);
+}

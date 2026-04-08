@@ -4,11 +4,8 @@ import {
   ChevronDown,
   ChevronUp,
   ExternalLink,
-  Globe,
-  Menu,
   Palette,
   Sun,
-  Video,
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -89,10 +86,9 @@ const STORAGE_KEY = "actuality-brightness";
 const DEFAULT_BRIGHTNESS = 100;
 
 function clampBrightness(val: number): number {
-  const closest = BRIGHTNESS_STEPS.reduce((prev, curr) =>
+  return BRIGHTNESS_STEPS.reduce((prev, curr) =>
     Math.abs(curr - val) < Math.abs(prev - val) ? curr : prev,
   );
-  return closest;
 }
 
 export default function Navigation() {
@@ -103,7 +99,7 @@ export default function Navigation() {
   const [meetOpen, setMeetOpen] = useState(false);
   const [devAccordionOpen, setDevAccordionOpen] = useState(false);
   const location = useLocation();
-  const { themeId, setThemeId, theme } = useTheme();
+  const { themeId, setThemeId } = useTheme();
   const overlayRef = useRef<HTMLDivElement>(null);
   const connectedOverlayRef = useRef<HTMLDivElement>(null);
   const [hoveredApp, setHoveredApp] = useState<string | null>(null);
@@ -113,7 +109,6 @@ export default function Navigation() {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const parsed = Number.parseFloat(stored);
-      // Handle legacy decimal values (e.g. 0.8 → 80)
       const asPercent = parsed <= 1.5 ? Math.round(parsed * 100) : parsed;
       return clampBrightness(asPercent);
     }
@@ -123,13 +118,11 @@ export default function Navigation() {
   const setBrightness = (val: number) => {
     setBrightnessState(val);
     localStorage.setItem(STORAGE_KEY, String(val));
-    // Dispatch event for ThemeBackground to pick up — brightness affects background only
     window.dispatchEvent(
       new CustomEvent("actuality-brightness-change", { detail: val }),
     );
   };
 
-  // On mount: clear any old root filter that previous versions may have set
   useEffect(() => {
     const root = document.getElementById("root");
     if (root) root.style.filter = "";
@@ -140,14 +133,12 @@ export default function Navigation() {
     ...(isAuthenticated ? [{ label: "Dashboard", to: "/dashboard" }] : []),
   ];
 
-  // Close panels on route change
   // biome-ignore lint/correctness/useExhaustiveDependencies: intentionally track pathname
   useEffect(() => {
     setPanelOpen(false);
     setConnectedPanelOpen(false);
   }, [location.pathname]);
 
-  // Close theme panel on Escape key
   useEffect(() => {
     if (!panelOpen) return;
     const handler = (e: KeyboardEvent) => {
@@ -157,7 +148,6 @@ export default function Navigation() {
     return () => document.removeEventListener("keydown", handler);
   }, [panelOpen]);
 
-  // Close connected apps panel on Escape key
   useEffect(() => {
     if (!connectedPanelOpen) return;
     const handler = (e: KeyboardEvent) => {
@@ -168,6 +158,11 @@ export default function Navigation() {
   }, [connectedPanelOpen]);
 
   const activeGradient = THEME_DESCRIPTIONS[themeId].gradient;
+
+  // Disabled state for pre-login controls
+  const disabledClass = "opacity-40 cursor-not-allowed pointer-events-none";
+  const navItemBase =
+    "font-body text-sm font-medium transition-colors hover:text-terracotta hover:underline underline-offset-4 text-muted-foreground";
 
   return (
     <>
@@ -200,7 +195,7 @@ export default function Navigation() {
 
             {/* Right side */}
             <div className="flex items-center gap-3">
-              {/* Desktop nav links */}
+              {/* Desktop nav links (Home / Dashboard) */}
               <nav className="hidden md:flex items-center gap-5 mr-2">
                 {navLinks.map((link) => (
                   <Link
@@ -218,80 +213,112 @@ export default function Navigation() {
                 ))}
               </nav>
 
-              {/* Meet button (desktop) */}
-              <button
-                type="button"
-                data-ocid="meet.open_modal_button"
-                onClick={() => setMeetOpen(true)}
-                className="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border bg-card hover:border-terracotta/40 transition-colors text-muted-foreground hover:text-terracotta text-sm font-body"
-                aria-label="Open Meet panel"
+              {/* Desktop text-link nav: Meet | Theme | Apps | Login */}
+              <nav
+                className="hidden md:flex items-center gap-0"
+                aria-label="Primary actions"
               >
-                <Video className="w-4 h-4" />
-                <span className="hidden sm:inline">Meet</span>
-              </button>
+                {/* Meet */}
+                <button
+                  type="button"
+                  data-ocid="meet.open_modal_button"
+                  onClick={() => isAuthenticated && setMeetOpen(true)}
+                  aria-label="Open Meet panel"
+                  aria-disabled={!isAuthenticated}
+                  className={`${navItemBase} px-3 py-1 ${!isAuthenticated ? disabledClass : ""}`}
+                >
+                  Meet
+                </button>
 
-              {/* Themes button (desktop) — opens side panel */}
-              <button
-                type="button"
-                data-ocid="nav.toggle"
-                onClick={() => setPanelOpen(true)}
-                className="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border bg-card hover:border-terracotta/40 transition-colors text-muted-foreground hover:text-terracotta text-sm font-body"
-                aria-label="Open theme picker"
-              >
-                <Palette className="w-4 h-4" />
-                <span className="hidden sm:inline">{theme.label}</span>
-              </button>
+                <span className="text-muted-foreground/50 select-none text-sm">
+                  |
+                </span>
 
-              {/* Connected Apps button (desktop) */}
-              <button
-                type="button"
-                data-ocid="connected_apps.open_modal_button"
-                onClick={() => setConnectedPanelOpen(true)}
-                className="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border bg-card hover:border-terracotta/40 transition-colors text-muted-foreground hover:text-terracotta text-sm font-body"
-                aria-label="Open Connected Apps panel"
-              >
-                <Globe className="w-4 h-4" />
-                <span className="hidden sm:inline">Connected Apps</span>
-              </button>
+                {/* Theme */}
+                <button
+                  type="button"
+                  data-ocid="nav.toggle"
+                  onClick={() => isAuthenticated && setPanelOpen(true)}
+                  aria-label="Open theme picker"
+                  aria-disabled={!isAuthenticated}
+                  className={`${navItemBase} px-3 py-1 ${!isAuthenticated ? disabledClass : ""}`}
+                >
+                  Theme
+                </button>
 
-              {/* Desktop: principal + login */}
-              <div className="hidden md:flex items-center gap-2">
-                <PrincipalDisplay />
-                <LoginButton size="sm" />
-              </div>
+                <span className="text-muted-foreground/50 select-none text-sm">
+                  |
+                </span>
 
-              {/* Mobile: Meet icon button */}
-              <button
-                type="button"
-                className="md:hidden p-3 text-muted-foreground hover:text-terracotta transition-colors"
-                onClick={() => setMeetOpen(true)}
-                aria-label="Open Meet"
-                data-ocid="meet.open_modal_button"
-              >
-                <Video className="w-6 h-6" />
-              </button>
+                {/* Apps (was Connected Apps) */}
+                <button
+                  type="button"
+                  data-ocid="connected_apps.open_modal_button"
+                  onClick={() => isAuthenticated && setConnectedPanelOpen(true)}
+                  aria-label="Open Apps panel"
+                  aria-disabled={!isAuthenticated}
+                  className={`${navItemBase} px-3 py-1 ${!isAuthenticated ? disabledClass : ""}`}
+                >
+                  Apps
+                </button>
 
-              {/* Mobile: Connected Apps icon button */}
-              <button
-                type="button"
-                className="md:hidden p-3 text-muted-foreground hover:text-terracotta transition-colors"
-                onClick={() => setConnectedPanelOpen(true)}
-                aria-label="Open Connected Apps"
-                data-ocid="connected_apps.open_modal_button"
-              >
-                <Globe className="w-6 h-6" />
-              </button>
+                <span className="text-muted-foreground/50 select-none text-sm">
+                  |
+                </span>
 
-              {/* Mobile hamburger */}
-              <button
-                type="button"
-                className="md:hidden p-3 text-muted-foreground hover:text-terracotta transition-colors"
-                onClick={() => setPanelOpen(true)}
-                aria-label="Open menu"
-                data-ocid="nav.toggle"
-              >
-                <Menu className="w-10 h-10" />
-              </button>
+                {/* Login / principal */}
+                <div className="flex items-center gap-2 pl-3">
+                  <PrincipalDisplay />
+                  <LoginButton
+                    size="sm"
+                    className="border-0 bg-transparent shadow-none px-0 py-1 font-body text-sm font-medium text-muted-foreground hover:text-terracotta hover:underline underline-offset-4 hover:bg-transparent"
+                  />
+                </div>
+              </nav>
+
+              {/* Mobile: Meet icon (only if authenticated) */}
+              {isAuthenticated && (
+                <button
+                  type="button"
+                  className="md:hidden p-3 text-muted-foreground hover:text-terracotta transition-colors"
+                  onClick={() => setMeetOpen(true)}
+                  aria-label="Open Meet"
+                  data-ocid="meet.open_modal_button"
+                >
+                  <span className="font-body text-xs font-medium">Meet</span>
+                </button>
+              )}
+
+              {/* Mobile: Apps icon button (only if authenticated) */}
+              {isAuthenticated && (
+                <button
+                  type="button"
+                  className="md:hidden p-3 text-muted-foreground hover:text-terracotta transition-colors"
+                  onClick={() => setConnectedPanelOpen(true)}
+                  aria-label="Open Apps"
+                  data-ocid="connected_apps.open_modal_button"
+                >
+                  <span className="font-body text-xs font-medium">Apps</span>
+                </button>
+              )}
+
+              {/* Mobile: Theme / menu button (only if authenticated) */}
+              {isAuthenticated ? (
+                <button
+                  type="button"
+                  className="md:hidden p-3 text-muted-foreground hover:text-terracotta transition-colors"
+                  onClick={() => setPanelOpen(true)}
+                  aria-label="Open theme menu"
+                  data-ocid="nav.toggle"
+                >
+                  <span className="font-body text-xs font-medium">Theme</span>
+                </button>
+              ) : (
+                /* Mobile login button when not authenticated */
+                <div className="md:hidden flex items-center">
+                  <LoginButton size="sm" />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -311,7 +338,7 @@ export default function Navigation() {
         />
       )}
 
-      {/* Dark overlay — connected apps panel */}
+      {/* Dark overlay — Apps panel */}
       {connectedPanelOpen && (
         <div
           ref={connectedOverlayRef}
@@ -321,7 +348,7 @@ export default function Navigation() {
           style={{ backdropFilter: "blur(2px)" }}
           onClick={() => setConnectedPanelOpen(false)}
           onKeyDown={(e) => e.key === "Escape" && setConnectedPanelOpen(false)}
-          aria-label="Close Connected Apps panel"
+          aria-label="Close Apps panel"
         />
       )}
 
@@ -344,7 +371,7 @@ export default function Navigation() {
             data-ocid="nav.close_button"
             onClick={() => setPanelOpen(false)}
             className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-            aria-label="Close menu"
+            aria-label="Close theme panel"
           >
             <X className="w-5 h-5" />
           </button>
@@ -381,7 +408,6 @@ export default function Navigation() {
                 {brightness}%
               </span>
             </div>
-            {/* Step buttons */}
             <div className="flex items-center justify-between gap-1">
               {BRIGHTNESS_STEPS.map((step) => (
                 <button
@@ -404,7 +430,6 @@ export default function Navigation() {
                 </button>
               ))}
             </div>
-            {/* Continuous slider */}
             <input
               type="range"
               data-ocid="dimmer.input"
@@ -492,26 +517,26 @@ export default function Navigation() {
         </div>
       </aside>
 
-      {/* Slide-in Connected Apps panel (left side) */}
+      {/* Slide-in Apps panel (left side) */}
       <aside
         className="fixed top-0 left-0 h-full z-[100] flex flex-col bg-background border-r border-border shadow-2xl transition-transform duration-300 ease-in-out"
         style={{
           width: "320px",
           transform: connectedPanelOpen ? "translateX(0)" : "translateX(-100%)",
         }}
-        aria-label="Connected Apps panel"
+        aria-label="Apps panel"
       >
         {/* Panel header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-border">
           <span className="font-display text-lg font-semibold text-foreground">
-            Connected Apps
+            Apps
           </span>
           <button
             type="button"
             data-ocid="connected_apps.close_button"
             onClick={() => setConnectedPanelOpen(false)}
             className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-            aria-label="Close Connected Apps panel"
+            aria-label="Close Apps panel"
           >
             <X className="w-5 h-5" />
           </button>
@@ -536,12 +561,10 @@ export default function Navigation() {
                   onMouseLeave={() => setHoveredApp(null)}
                   className="relative w-full rounded-xl border-2 border-border overflow-hidden text-left transition-all hover:scale-[1.01] hover:border-primary/40 hover:shadow-md no-underline"
                 >
-                  {/* Theme-matched color band */}
                   <div
                     className="h-8 w-full"
                     style={{ background: activeGradient }}
                   />
-                  {/* Card body */}
                   <div className="px-3 py-2.5 bg-card">
                     <div className="flex items-start justify-between gap-2">
                       <div>
@@ -574,7 +597,7 @@ export default function Navigation() {
               aria-expanded={devAccordionOpen}
             >
               <span className="font-body text-sm font-semibold text-foreground">
-                For Connected App Developers
+                For App Developers
               </span>
               {devAccordionOpen ? (
                 <ChevronUp className="w-4 h-4 text-muted-foreground flex-shrink-0" />

@@ -37,7 +37,7 @@ export const ShareLinkPublic = IDL.Record({
 });
 
 export const idlService = IDL.Service({
-  '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+  '_initializeAccessControl' : IDL.Func([], [], []),
   'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
   'cancelMembership' : IDL.Func([], [], []),
   'createShareLink' : IDL.Func([IDL.Text, IDL.Nat, IDL.Text], [IDL.Text], []),
@@ -108,7 +108,7 @@ export const idlFactory = ({ IDL }) => {
   });
   
   return IDL.Service({
-    '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+    '_initializeAccessControl' : IDL.Func([], [], []),
     'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
     'cancelMembership' : IDL.Func([], [], []),
     'createShareLink' : IDL.Func([IDL.Text, IDL.Nat, IDL.Text], [IDL.Text], []),

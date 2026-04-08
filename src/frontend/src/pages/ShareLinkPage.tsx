@@ -4,8 +4,8 @@ import { Link, useParams } from "@tanstack/react-router";
 import { ArrowLeft, CheckCircle2, Clock, Lock, XCircle } from "lucide-react";
 import type React from "react";
 import { useEffect, useState } from "react";
-import type { ShareLinkPublic } from "../backend";
 import { useActor } from "../hooks/useActor";
+import type { ShareLinkPublic } from "../types";
 
 type Status = "loading" | "needs_password" | "valid" | "invalid" | "expired";
 
@@ -16,7 +16,12 @@ function formatExpiry(nanos: bigint): string {
 
 export default function ShareLinkPage() {
   const { linkId } = useParams({ from: "/share/$linkId" });
-  const { actor } = useActor();
+  const { actor: rawActor } = useActor();
+  // biome-ignore lint/suspicious/noExplicitAny: backend interface incomplete
+  const actor = rawActor as unknown as Record<
+    string,
+    (...args: unknown[]) => Promise<unknown>
+  > | null;
 
   const [status, setStatus] = useState<Status>("loading");
   const [shareLink, setShareLink] = useState<ShareLinkPublic | null>(null);
@@ -26,9 +31,12 @@ export default function ShareLinkPage() {
 
   useEffect(() => {
     if (!actor || !linkId) return;
-    actor
-      .getShareLink(linkId)
-      .then((link) => {
+    (
+      actor.getShareLink?.(linkId) as
+        | Promise<ShareLinkPublic | null>
+        | undefined
+    )
+      ?.then((link) => {
         if (!link) {
           setStatus("invalid");
           return;
@@ -39,7 +47,9 @@ export default function ShareLinkPage() {
           setStatus("expired");
           return;
         }
-        actor.validateShareLink(linkId, "").then((ok) => {
+        (
+          actor.validateShareLink?.(linkId, "") as Promise<boolean> | undefined
+        )?.then((ok) => {
           setStatus(ok ? "valid" : "needs_password");
         });
       })
@@ -53,7 +63,9 @@ export default function ShareLinkPage() {
     setChecking(true);
     try {
       const hash = btoa(encodeURIComponent(password));
-      const ok = await actor.validateShareLink(linkId, hash);
+      const ok = await (actor.validateShareLink?.(linkId, hash) as
+        | Promise<boolean>
+        | undefined);
       if (ok) setStatus("valid");
       else setPwError("Incorrect password. Please try again.");
     } catch {

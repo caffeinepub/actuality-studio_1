@@ -10,7 +10,7 @@ import {
   XCircle,
 } from "lucide-react";
 import React from "react";
-import type { Membership } from "../backend";
+import type { Membership } from "../types";
 
 interface MembershipCardProps {
   membership: Membership;

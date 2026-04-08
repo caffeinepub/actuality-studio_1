@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
-import type { ShareLinkPublic } from "../backend";
 import LoginButton from "../components/LoginButton";
 import MembershipCard from "../components/MembershipCard";
 import MintMembershipButton from "../components/MintMembershipButton";
@@ -35,6 +34,7 @@ import {
   useIsMembershipActive,
   useIsTrialActive,
 } from "../hooks/useQueries";
+import type { ShareLinkPublic } from "../types";
 
 function DashboardSkeleton() {
   return (
@@ -97,7 +97,12 @@ interface ShareLinkCreated {
 }
 
 function ShareLinkSection() {
-  const { actor } = useActor();
+  const { actor: rawActor } = useActor();
+  // biome-ignore lint/suspicious/noExplicitAny: backend interface incomplete
+  const actor = rawActor as unknown as Record<
+    string,
+    (...args: unknown[]) => Promise<unknown>
+  > | null;
   const [docName, setDocName] = useState("");
   const [expiryHours, setExpiryHours] = useState("24");
   const [sharePassword, setSharePassword] = useState("");
@@ -114,11 +119,11 @@ function ShareLinkSection() {
       const passwordHash = sharePassword
         ? btoa(encodeURIComponent(sharePassword))
         : "";
-      const linkId = await actor.createShareLink(
+      const linkId = (await actor.createShareLink?.(
         docName,
         BigInt(expiryHours),
         passwordHash,
-      );
+      )) as string;
       const link = `${window.location.origin}/share/${linkId}`;
       setCreatedLinks((prev) => [
         { id: linkId, documentName: docName, expiryHours, link },
@@ -143,7 +148,7 @@ function ShareLinkSection() {
     if (!actor) return;
     setRevoking(id);
     try {
-      await actor.revokeShareLink(id);
+      await actor.revokeShareLink?.(id);
       setCreatedLinks((prev) => prev.filter((l) => l.id !== id));
     } catch (err) {
       console.error("Failed to revoke", err);

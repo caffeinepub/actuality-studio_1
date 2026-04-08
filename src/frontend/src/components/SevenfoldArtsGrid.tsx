@@ -159,13 +159,17 @@ export default function SevenfoldArtsGrid() {
   const [initialized, setInitialized] = useState(false);
   const { identity } = useInternetIdentity();
   const isAuthenticated = !!identity;
-  const { actor } = useActor();
+  const { actor: rawActor } = useActor();
+  // biome-ignore lint/suspicious/noExplicitAny: backend interface incomplete
+  const actor = rawActor as unknown as Record<
+    string,
+    (...args: unknown[]) => Promise<unknown>
+  > | null;
 
   useEffect(() => {
     if (!isAuthenticated || !actor || initialized) return;
-    actor
-      .getSelectedArts()
-      .then((savedArts) => {
+    (actor.getSelectedArts?.() as Promise<string[]> | undefined)
+      ?.then((savedArts) => {
         setSelected(new Set(savedArts));
         setInitialized(true);
       })
@@ -177,9 +181,11 @@ export default function SevenfoldArtsGrid() {
       const next = new Set(prev);
       if (next.has(name)) next.delete(name);
       else next.add(name);
-      if (isAuthenticated && actor) {
+      if (isAuthenticated && actor?.saveSelectedArts) {
         setSaving(true);
-        actor.saveSelectedArts([...next]).finally(() => setSaving(false));
+        (actor.saveSelectedArts([...next]) as Promise<unknown>).finally(() =>
+          setSaving(false),
+        );
       }
       return next;
     });
